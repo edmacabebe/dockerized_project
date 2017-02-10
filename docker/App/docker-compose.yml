@@ -1,0 +1,37 @@
+version: '2'
+services:
+  web:
+    restart: always
+    build: .
+    container_name: icdcms
+    ports:
+     - "3000:3000"
+     - "30052:30052"
+    environment:
+     - NODE_ENV=development
+    volumes_from:
+     - web-data
+  web-data:
+    build: .
+    entrypoint: /bin/true
+    volumes:
+     - ./:/opt/icdcms
+  db:
+    image: marklogic:8
+    restart: always
+    ports:
+     - "7997:7997"
+     - "8000:8000"
+     - "8001:8001"
+     - "8002:8002"
+     - "8004:8004"
+     - "30050:30050"
+     - "30051:30051"
+    volumes_from:
+      - db-data
+  db-data:
+    image: marklogic:8
+    volumes:
+      - /opt/MarkLogic/
+      - /var/opt/MarkLogic/Logs/
+    entrypoint: /bin/true
