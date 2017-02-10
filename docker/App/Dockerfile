@@ -4,11 +4,15 @@ MAINTAINER Zoilo Dela Cruz <luxknight007@gmail.com>
 
 ENV NODE_ENV development
 
-COPY . /opt/icdcms
+EXPOSE 3000 30052
 
-WORKDIR /opt/icdcms
+# Set user node for bower since bower is required to run in non root.
+USER node
 
-RUN gulp serve-local
+COPY . /home/node
 
-# Run MEAN.JS server
-CMD ["gulp", "serve-local"]
+# WORKDIR /home/node
+
+# Run server
+# CMD ["gulp", "serve-local"]
+CMD ["bash"]

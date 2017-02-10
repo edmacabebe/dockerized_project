@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Zoilo Dela Cruz <luxknight007@gmail.com>
 
-ENV ML_RPM_FILE MarkLogic.rpm
+ENV ML_RPM_FILE *.rpm
 
 # Download ML rpm
 ADD ${ML_RPM_FILE} /tmp/${ML_RPM_FILE}
