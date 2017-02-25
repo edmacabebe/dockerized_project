@@ -14,7 +14,8 @@ RUN tar -xJf /tmp/$NODEJS -C /usr/local --strip-components=1 \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 RUN npm install -g bower \
-	 && npm install -g gulp
+	 && npm install -g gulp \
+	 && npm install -g grunt
 
 # Required library for node, bower and gulp
 RUN yum -y install git \
